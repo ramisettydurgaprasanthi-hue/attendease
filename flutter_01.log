@@ -1,0 +1,85 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -d chrome --no-enable-impeller
+
+## exception
+
+ProcessException: ProcessException: An Application Control policy has blocked this file (at ../../runtime/bin/process_win.cc:577)
+  Command: C:\flutter\src\flutter\bin\cache\artifacts\engine\windows-x64\impellerc.exe --sksl --iplr --json --sl=build\flutter_assets\shaders/ink_sparkle.frag --spirv=build\flutter_assets\shaders/ink_sparkle.frag.spirv --input=C:\flutter\src\flutter\packages\flutter\lib\src\material\shaders\ink_sparkle.frag --input-type=frag --include=C:\flutter\src\flutter\packages\flutter\lib\src\material\shaders --include=C:\flutter\src\flutter\bin\cache\artifacts\engine\windows-x64\shader_lib
+
+```
+#0      _ProcessImpl._start (dart:io-patch/process_patch.dart:411:33)
+#1      Process.start (dart:io-patch/process_patch.dart:42:20)
+#2      _runNonInteractiveProcess (dart:io-patch/process_patch.dart:613:18)
+#3      Process.run (dart:io-patch/process_patch.dart:56:12)
+#4      LocalProcessManager.run (package:process/src/interface/local_process_manager.dart:72:22)
+#5      ErrorHandlingProcessManager.run.<anonymous closure> (package:flutter_tools/src/base/error_handling_io.dart:1217:26)
+#6      _run (package:flutter_tools/src/base/error_handling_io.dart:1050:22)
+#7      ErrorHandlingProcessManager.run (package:flutter_tools/src/base/error_handling_io.dart:1215:12)
+#8      ShaderCompiler.compileShader (package:flutter_tools/src/build_system/tools/shader_compiler.dart:195:56)
+#9      writeBundle.<anonymous closure> (package:flutter_tools/src/bundle_builder.dart:227:46)
+<asynchronous suspension>
+#10     Future.wait.<anonymous closure> (dart:async/future.dart:546:21)
+<asynchronous suspension>
+#11     writeBundle (package:flutter_tools/src/bundle_builder.dart:171:3)
+<asynchronous suspension>
+#12     WebDevFS.update (package:flutter_tools/src/isolated/devfs_web.dart:342:9)
+<asynchronous suspension>
+#13     ResidentWebRunner._updateDevFS (package:flutter_tools/src/isolated/resident_web_runner.dart:804:35)
+<asynchronous suspension>
+#14     ResidentWebRunner.run.<anonymous closure> (package:flutter_tools/src/isolated/resident_web_runner.dart:330:41)
+<asynchronous suspension>
+#15     asyncGuard.<anonymous closure> (package:flutter_tools/src/base/async_guard.dart:108:24)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[33m[!][39m Flutter (Channel stable, 3.44.6, on Microsoft Windows [Version 10.0.26200.9711], locale en-IN) [228ms]
+    [32m•[39m Flutter version 3.44.6 on channel stable at C:\flutter\src\flutter
+    [33m![39m The flutter binary is not on your path. Consider adding C:\flutter\src\flutter\bin to your path.
+    [33m![39m The dart binary is not on your path. Consider adding C:\flutter\src\flutter\bin to your path.
+    [32m•[39m Upstream repository https://github.com/flutter/flutter.git
+    [32m•[39m Framework revision ee80f08bbf (4 months ago), 2026-07-08 15:02:06 -0700
+    [32m•[39m Engine revision 83675ed276
+    [32m•[39m Dart version 3.12.2
+    [32m•[39m DevTools version 2.57.0
+    [32m•[39m Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations,
+      enable-native-assets, enable-swift-package-manager, omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
+    [32m•[39m If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update checks and
+      upgrades.
+
+[32m[✓][39m Windows Version (Windows 11 or higher, 25H2, 2009) [7.7s]
+
+[33m[!][39m Android toolchain - develop for Android devices (Android SDK version 36.1.0) [5.8s]
+    [32m•[39m Android SDK at C:\Users\ramis\AppData\Local\Android\sdk
+    [32m•[39m Emulator version unknown
+    [32m•[39m Platform android-36.1, build-tools 36.1.0
+    [32m•[39m Java binary at: C:\Program Files\Android\Android Studio\jbr\bin\java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    [32m•[39m Java version OpenJDK Runtime Environment (build 21.0.10+-14961533-b1163.108)
+    [33m![39m Some Android licenses not accepted. To resolve this, run: flutter doctor --android-licenses
+
+[32m[✓][39m Chrome - develop for the web [216ms]
+    [32m•[39m Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[31m[✗][39m Visual Studio - develop Windows apps [215ms]
+    [31m✗[39m Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[32m[✓][39m Connected device (3 available) [401ms]
+    [32m•[39m Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.26200.9711]
+    [32m•[39m Chrome (web)      • chrome  • web-javascript • Google Chrome 155.0.8059.85
+    [32m•[39m Edge (web)        • edge    • web-javascript • Microsoft Edge 156.0.4314.42
+
+[32m[✓][39m Network resources [900ms]
+    [32m•[39m All expected network resources are available.
+
+[33m![39m Doctor found issues in 3 categories.
+```
